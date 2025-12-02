@@ -22,7 +22,14 @@ export const metadata: Metadata = {
   title: "SheleNews | Modern News Aggregator",
   description:
     "Stay informed with the latest news from around the world. A beautiful, modern news experience powered by AI.",
-  keywords: ["news", "latest news", "world news", "technology", "business", "sports"],
+  keywords: [
+    "news",
+    "latest news",
+    "world news",
+    "technology",
+    "business",
+    "sports",
+  ],
   openGraph: {
     title: "SheleNews | Modern News Aggregator",
     description: "Stay informed with the latest news from around the world.",
@@ -36,7 +43,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${sora.variable} ${dmSans.variable}`} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${sora.variable} ${dmSans.variable}`}
+      suppressHydrationWarning
+    >
       <body className="min-h-screen flex flex-col">
         <QueryProvider>
           <ThemeProvider>

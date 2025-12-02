@@ -39,7 +39,11 @@ export default function Home() {
   if (isError) {
     return (
       <div className="container-main py-16">
-        <EmptyState type="error" message={error?.message} onRetry={() => refetch()} />
+        <EmptyState
+          type="error"
+          message={error?.message}
+          onRetry={() => refetch()}
+        />
       </div>
     );
   }
@@ -97,7 +101,9 @@ export default function Home() {
 
           {/* Featured + Side Layout */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {featured && <NewsCard article={featured} variant="featured" index={0} />}
+            {featured && (
+              <NewsCard article={featured} variant="featured" index={0} />
+            )}
 
             <div className="flex flex-col">
               <div className="flex items-center gap-2 mb-4">
@@ -106,7 +112,12 @@ export default function Home() {
               </div>
               <div className="flex-1 flex flex-col gap-4">
                 {sideArticles.map((article, i) => (
-                  <NewsCard key={article.article_id} article={article} variant="compact" index={i + 1} />
+                  <NewsCard
+                    key={article.article_id}
+                    article={article}
+                    variant="compact"
+                    index={i + 1}
+                  />
                 ))}
               </div>
             </div>
@@ -124,7 +135,11 @@ export default function Home() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {gridArticles.map((article, i) => (
-                <NewsCard key={article.article_id} article={article} index={i + 4} />
+                <NewsCard
+                  key={article.article_id}
+                  article={article}
+                  index={i + 4}
+                />
               ))}
             </div>
           </section>

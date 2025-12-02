@@ -83,8 +83,7 @@ export const useNewsStore = create<NewsStore>()(
 
       // Theme
       isDarkMode: false,
-      toggleDarkMode: () =>
-        set((state) => ({ isDarkMode: !state.isDarkMode })),
+      toggleDarkMode: () => set((state) => ({ isDarkMode: !state.isDarkMode })),
     }),
     {
       name: "shele-news-storage",
@@ -96,6 +95,6 @@ export const useNewsStore = create<NewsStore>()(
           language: state.filters.language,
         },
       }),
-    }
-  )
+    },
+  ),
 );

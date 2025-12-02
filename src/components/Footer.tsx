@@ -1,12 +1,25 @@
-import { Newspaper, Github, Linkedin, Twitter, Heart, ExternalLink } from "lucide-react";
+import {
+  Newspaper,
+  Github,
+  Linkedin,
+  Twitter,
+  Heart,
+  ExternalLink,
+} from "lucide-react";
 
-const categories = ["Technology", "Business", "Sports", "Entertainment", "Science"];
+const categories = [
+  "Technology",
+  "Business",
+  "Sports",
+  "Entertainment",
+  "Science",
+];
 
 export function Footer() {
   return (
     <footer className="relative mt-20">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-rose-500/50 to-transparent" />
-      
+
       <div className="bg-[var(--color-surface-alt)]">
         <div className="container-main py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -23,15 +36,18 @@ export function Footer() {
                   <span className="text-xl font-bold">
                     Shele<span className="text-gradient">News</span>
                   </span>
-                  <p className="text-xs text-[var(--color-ink-muted)]">Stay informed</p>
+                  <p className="text-xs text-[var(--color-ink-muted)]">
+                    Stay informed
+                  </p>
                 </div>
               </a>
-              
+
               <p className="text-[var(--color-ink-muted)] text-sm max-w-md leading-relaxed">
-                Your modern news aggregator. Stay informed with real-time updates 
-                from trusted sources worldwide. Built with Next.js, React, and love.
+                Your modern news aggregator. Stay informed with real-time
+                updates from trusted sources worldwide. Built with Next.js,
+                React, and love.
               </p>
-              
+
               {/* Social Media Links - Commented out */}
               {/* <div className="flex gap-2">
                 {[
@@ -117,7 +133,10 @@ export function Footer() {
             </p>
             <p className="text-sm text-[var(--color-ink-muted)] flex items-center gap-1.5">
               Crafted with
-              <Heart className="w-4 h-4 text-rose-500 fill-rose-500" style={{ animation: "pulse 2s infinite" }} />
+              <Heart
+                className="w-4 h-4 text-rose-500 fill-rose-500"
+                style={{ animation: "pulse 2s infinite" }}
+              />
               by
               <a
                 href="https://github.com"
