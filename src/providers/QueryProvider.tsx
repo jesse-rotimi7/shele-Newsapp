@@ -26,3 +26,4 @@ export function QueryProvider({ children }: QueryProviderProps) {
     <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
   );
 }
+

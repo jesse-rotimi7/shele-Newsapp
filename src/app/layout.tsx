@@ -30,10 +30,31 @@ export const metadata: Metadata = {
     "business",
     "sports",
   ],
+  manifest: "/manifest.json",
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.svg", sizes: "180x180", type: "image/svg+xml" },
+    ],
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "SheleNews",
+  },
+  themeColor: "#e11d48",
   openGraph: {
     title: "SheleNews | Modern News Aggregator",
     description: "Stay informed with the latest news from around the world.",
     type: "website",
+    siteName: "SheleNews",
+  },
+  twitter: {
+    card: "summary",
+    title: "SheleNews | Modern News Aggregator",
+    description: "Stay informed with the latest news from around the world.",
   },
 };
 

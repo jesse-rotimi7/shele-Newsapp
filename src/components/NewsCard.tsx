@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { clsx } from "clsx";
 import {
   Bookmark,
@@ -25,6 +26,7 @@ export function NewsCard({
 }: NewsCardProps) {
   const { addBookmark, removeBookmark, isBookmarked } = useNewsStore();
   const bookmarked = isBookmarked(article.article_id);
+  const [imageError, setImageError] = useState(false);
 
   const toggleBookmark = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -41,7 +43,14 @@ export function NewsCard({
         });
   };
 
+  const handleImageError = () => {
+    setImageError(true);
+  };
+
   const style = { animationDelay: `${index * 0.08}s` };
+  
+  // Show placeholder if no image_url or if image failed to load
+  const showPlaceholder = !article.image_url || imageError;
 
   // Featured variant
   if (variant === "featured") {
@@ -57,17 +66,18 @@ export function NewsCard({
           className="block"
         >
           <div className="relative aspect-[4/3] sm:aspect-video overflow-hidden">
-            {article.image_url ? (
-              <img
-                src={article.image_url}
-                alt=""
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                loading="lazy"
-              />
-            ) : (
+            {showPlaceholder ? (
               <div className="w-full h-full bg-gradient-to-br from-rose-500/20 to-rose-400/20 grid place-items-center">
                 <span className="text-8xl opacity-20">📰</span>
               </div>
+            ) : (
+              <img
+                src={article.image_url || ""}
+                alt=""
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+                onError={handleImageError}
+              />
             )}
 
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80" />
@@ -144,17 +154,18 @@ export function NewsCard({
           className="flex gap-4 flex-1 min-w-0"
         >
           <div className="relative w-24 h-24 shrink-0 rounded-xl overflow-hidden">
-            {article.image_url ? (
-              <img
-                src={article.image_url}
-                alt=""
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                loading="lazy"
-              />
-            ) : (
+            {showPlaceholder ? (
               <div className="w-full h-full bg-gradient-to-br from-rose-500/10 to-rose-400/10 grid place-items-center">
                 <span className="text-2xl opacity-30">📰</span>
               </div>
+            ) : (
+              <img
+                src={article.image_url || ""}
+                alt=""
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                loading="lazy"
+                onError={handleImageError}
+              />
             )}
           </div>
 
@@ -204,17 +215,18 @@ export function NewsCard({
         className="flex-1 flex flex-col"
       >
         <div className="relative aspect-[16/10] overflow-hidden">
-          {article.image_url ? (
-            <img
-              src={article.image_url}
-              alt=""
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              loading="lazy"
-            />
-          ) : (
+          {showPlaceholder ? (
             <div className="w-full h-full bg-gradient-to-br from-rose-500/10 to-rose-400/10 grid place-items-center">
               <span className="text-5xl opacity-20">📰</span>
             </div>
+          ) : (
+            <img
+              src={article.image_url || ""}
+              alt=""
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              loading="lazy"
+              onError={handleImageError}
+            />
           )}
 
           {article.category?.[0] && (
